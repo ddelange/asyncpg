@@ -2,12 +2,12 @@ name: Release
 
 on:
   pull_request:
-    # branches:
-    #   - "master"
-    #   - "ci"
-    #   - "[0-9]+.[0-9x]+*"
-    # paths:
-    #   - "asyncpg/_version.py"
+    branches:
+      - "master"
+      - "ci"
+      - "[0-9]+.[0-9x]+*"
+    paths:
+      - "asyncpg/_version.py"
 
 jobs:
   validate-release-request:
@@ -69,7 +69,7 @@ jobs:
         path: dist/*.tar.*
 
   build-wheels-matrix:
-    # needs: validate-release-request
+    needs: validate-release-request
     runs-on: ubuntu-latest
     outputs:
       include: ${{ steps.set-matrix.outputs.include }}
