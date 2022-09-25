@@ -76,7 +76,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v4
-      - run: pip install https://github.com/henryiii/cibuildwheel/archive/refs/heads/henryiii/fix/crossplatform.zip  # unreleased ref https://github.com/pypa/cibuildwheel/pull/1266
+      - run: pip install cibuildwheel==2.10.2
       - id: set-matrix
         run: |
           MATRIX_INCLUDE=$(
@@ -115,7 +115,7 @@ jobs:
       if: runner.os == 'Linux'
       uses: docker/setup-qemu-action@v2
 
-    - uses: pypa/cibuildwheel@v2.10.0
+    - uses: pypa/cibuildwheel@v2.10.2
       with:
         only: ${{ matrix.only }}
       env:
