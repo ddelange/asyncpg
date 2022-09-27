@@ -27,11 +27,6 @@ if [ "${ID}" = "debian" -o "${ID}" = "ubuntu" ]; then
     apt-get install -y --no-install-recommends \
         "postgresql-${PGVERSION}" \
         "postgresql-contrib-${PGVERSION}"
-elif [ "${ID}" = "almalinux" ]; then
-    yum install -y \
-        "postgresql-server" \
-        "postgresql-devel" \
-        "postgresql-contrib"
 elif [ "${ID}" = "centos" ]; then
     el="EL-${VERSION_ID%.*}-$(arch)"
     baseurl="https://download.postgresql.org/pub/repos/yum/reporpms"

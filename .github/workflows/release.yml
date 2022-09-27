@@ -2,12 +2,12 @@ name: Release
 
 on:
   pull_request:
-    branches:
-      - "master"
-      - "ci"
-      - "[0-9]+.[0-9x]+*"
-    paths:
-      - "asyncpg/_version.py"
+    # branches:
+    #   - "master"
+    #   - "ci"
+    #   - "[0-9]+.[0-9x]+*"
+    # paths:
+    #   - "asyncpg/_version.py"
 
 jobs:
   validate-release-request:
@@ -69,7 +69,7 @@ jobs:
         path: dist/*.tar.*
 
   build-wheels-matrix:
-    needs: validate-release-request
+    # needs: validate-release-request
     runs-on: ubuntu-latest
     outputs:
       include: ${{ steps.set-matrix.outputs.include }}
@@ -120,8 +120,6 @@ jobs:
         only: ${{ matrix.only }}
       env:
         CIBW_BUILD_VERBOSITY: 1
-        CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
-        CIBW_MANYLINUX_AARCH64_IMAGE: manylinux_2_28
 
     - uses: actions/upload-artifact@v2
       with:
